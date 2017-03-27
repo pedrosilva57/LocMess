@@ -5,7 +5,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -40,8 +44,15 @@ public class LocationFragment extends Fragment {
                 Toast.makeText(getActivity(), teste[position], Toast.LENGTH_SHORT).show();
             }
         });
-        return rootView;
-        //return inflater.inflate(R.layout.fragment_location, container, false);
-    }
 
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.v("long clicked", "pos:" + position);
+                return false;
+            }
+        });
+
+        return rootView;
+    }
 }
