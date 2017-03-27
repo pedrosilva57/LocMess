@@ -1,20 +1,21 @@
 package com.example.eduardo.locmess;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     ActionBar actionBar;
+    private boolean viewIsAtHome;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         Fragment locationFragment = LocationFragment.newInstance();
-        ft.replace(R.id.content_id, locationFragment);
+        ft.replace(R.id.local_id, locationFragment);
         ft.commit();
     }
 
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         Fragment messagesFragment = MessagesFragment.newInstance();
-        ft.replace(R.id.content_id, messagesFragment);
+        ft.replace(R.id.message_id, messagesFragment);
         ft.commit();
     }
 
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         Fragment profileFragment = ProfileFragment.newInstance();
-        ft.replace(R.id.content_id, profileFragment);
+        ft.replace(R.id.profile_id, profileFragment);
         ft.commit();
     }
 }
