@@ -21,19 +21,29 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment fragment = null;
+
             switch (item.getItemId()) {
                 case R.id.navigation_location:
                     actionBar.setTitle("Location");
-                    setLocationFragment();
+                    fragment = new LocationFragment();
+                    //setLocationFragment();
                     return true;
                 case R.id.navigation_messages:
                     actionBar.setTitle("Messages");
-                    setMessagesFragment();
+                    fragment = new MessagesFragment();
+                    //setMessagesFragment();
                     return true;
                 case R.id.navigation_profile:
                     actionBar.setTitle("Profile");
-                    setProfileFragment();
+                    fragment = new ProfileFragment();
+                    //setProfileFragment();
                     return true;
+            }
+            if (fragment != null) {
+                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+                ft.replace(R.id.content_id, fragment);
+                ft.commit();
             }
             return false;
         }
@@ -44,34 +54,32 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        actionBar=getSupportActionBar();
+        actionBar = getSupportActionBar();
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigationBar);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
-
     }
 
-    public void setLocationFragment(){
-        FragmentManager fm= getSupportFragmentManager();
-        FragmentTransaction ft=fm.beginTransaction();
-        Fragment locationFragment=LocationFragment.newInstance();
-        ft.replace(R.id.locationListView,locationFragment);
+    public void setLocationFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        Fragment locationFragment = LocationFragment.newInstance();
+        ft.replace(R.id.content_id, locationFragment);
         ft.commit();
     }
 
-    public void setMessagesFragment(){
-        FragmentManager fm= getSupportFragmentManager();
-        FragmentTransaction ft=fm.beginTransaction();
-        Fragment messagesFragment=MessagesFragment.newInstance();
-        ft.replace(R.id.messagesListView,messagesFragment);
+    public void setMessagesFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        Fragment messagesFragment = MessagesFragment.newInstance();
+        ft.replace(R.id.content_id, messagesFragment);
         ft.commit();
     }
 
-    public void setProfileFragment(){
-        FragmentManager fm= getSupportFragmentManager();
-        FragmentTransaction ft=fm.beginTransaction();
-        Fragment profileFragment=ProfileFragment.newInstance();
-        ft.replace(R.id.content_id,profileFragment);
+    public void setProfileFragment() {
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        Fragment profileFragment = ProfileFragment.newInstance();
+        ft.replace(R.id.content_id, profileFragment);
         ft.commit();
     }
 }
