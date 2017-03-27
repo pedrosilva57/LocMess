@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 public class LocationFragment extends Fragment {
 
-    String[] teste = {"Almada", "Lisboa", "Oeiras", "Cacém", "Loures", "Setúbal", "Corroios", "Seixal", "Costa da Caparica", "Sesimbra"};
+    String[] teste = {"Almada", "Lisboa", "Oeiras", "Cacém", "Loures", "Setúbal", "Corroios", "Seixal", "Costa da Caparica", "Sesimbra", "Faro", "Coimbra", "Leiria"};
 
 
     public static LocationFragment newInstance() {
