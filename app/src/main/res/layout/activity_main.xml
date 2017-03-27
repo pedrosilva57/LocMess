@@ -8,6 +8,15 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.eduardo.locmess.MainActivity">
 
+    <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/navigation"
+        android:animateLayoutChanges="true">
+
+    </FrameLayout>
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigationBar"
         android:layout_width="match_parent"

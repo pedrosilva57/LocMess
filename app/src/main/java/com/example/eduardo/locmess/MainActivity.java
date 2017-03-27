@@ -15,38 +15,31 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity {
 
     ActionBar actionBar;
-    private boolean viewIsAtHome;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment fragment = null;
-
+            Fragment selectedFragment = null;
             switch (item.getItemId()) {
                 case R.id.navigation_location:
                     actionBar.setTitle("Location");
-                    fragment = new LocationFragment();
-                    //setLocationFragment();
-                    return true;
+                    selectedFragment = LocationFragment.newInstance();
+                    break;
                 case R.id.navigation_messages:
                     actionBar.setTitle("Messages");
-                    fragment = new MessagesFragment();
-                    //setMessagesFragment();
-                    return true;
+                    selectedFragment = MessagesFragment.newInstance();
+                    break;
                 case R.id.navigation_profile:
                     actionBar.setTitle("Profile");
-                    fragment = new ProfileFragment();
-                    //setProfileFragment();
-                    return true;
+                    selectedFragment = ProfileFragment.newInstance();
+                    break;
             }
-            if (fragment != null) {
-                FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-                ft.replace(R.id.content_id, fragment);
-                ft.commit();
-            }
-            return false;
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.frame_layout, selectedFragment);
+            ft.commit();
+            return true;
         }
 
     };
@@ -56,31 +49,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         actionBar = getSupportActionBar();
+
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigationBar);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-    }
 
-    public void setLocationFragment() {
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        Fragment locationFragment = LocationFragment.newInstance();
-        ft.replace(R.id.local_id, locationFragment);
-        ft.commit();
-    }
-
-    public void setMessagesFragment() {
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        Fragment messagesFragment = MessagesFragment.newInstance();
-        ft.replace(R.id.message_id, messagesFragment);
-        ft.commit();
-    }
-
-    public void setProfileFragment() {
-        FragmentManager fm = getSupportFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        Fragment profileFragment = ProfileFragment.newInstance();
-        ft.replace(R.id.profile_id, profileFragment);
-        ft.commit();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame_layout, LocationFragment.newInstance());
+        transaction.commit();
     }
 }
