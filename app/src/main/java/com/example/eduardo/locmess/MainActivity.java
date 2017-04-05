@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_layout, LocationFragment.newInstance());
         transaction.commit();
-
+        statusCheck();
 
     }
 //Location Check
