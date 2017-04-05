@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 public class LocationFragment extends Fragment {
 
+    FloatingActionButton fab;
     String[] teste = {"Almada", "Lisboa", "Oeiras", "Cacém", "Loures", "Setúbal", "Corroios", "Seixal", "Costa da Caparica", "Sesimbra", "Faro", "Coimbra", "Leiria"};
 
 
@@ -33,8 +34,19 @@ public class LocationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_location, container, false);
+
+        //Floating Action Button Action
+        fab = (FloatingActionButton) rootView.findViewById(R.id.locatAdd);
+        fab.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity(), AddLocationActivity.class);
+                startActivity(intent);
+            }
+        });
 
         ListView lv = (ListView) rootView.findViewById(R.id.locationListView);
         ArrayAdapter adapter = new ArrayAdapter(this.getActivity(), android.R.layout.simple_list_item_1, teste);

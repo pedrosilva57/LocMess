@@ -1,8 +1,10 @@
 package com.example.eduardo.locmess;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import android.widget.Toast;
 
 public class MessagesFragment extends Fragment {
 
+    FloatingActionButton fab;
     String[] teste = {"SMS 1", "SMS 2", "SMS 3", "SMS 4", "SMS 5", "SMS 6", "SMS 7", "SMS 8", "SMS 9", "SMS 10", "SMS 11"};
 
     public static MessagesFragment newInstance() {
@@ -26,6 +29,16 @@ public class MessagesFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_messages, container, false);
+
+        //Floating Action Button Action
+        /*fab = (FloatingActionButton) rootView.findViewById(R.id.messageAdd);
+        fab.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(getActivity(), .class);
+                startActivity(intent);
+            }
+        });*/
 
         ListView lv = (ListView) rootView.findViewById(R.id.messagesListView);
         ArrayAdapter adapter = new ArrayAdapter(this.getActivity(), android.R.layout.simple_list_item_1, teste);

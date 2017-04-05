@@ -19,7 +19,7 @@ import android.view.View;
 public class MainActivity extends AppCompatActivity {
 
     ActionBar actionBar;
-    FloatingActionButton fab;
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -62,13 +62,7 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.frame_layout, LocationFragment.newInstance());
         transaction.commit();
 
-        /*fab = (FloatingActionButton) findViewById(R.id.locatAdd);
-        fab.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(MainActivity.this, AddLocationActivity.class);
-            }
-        });*/
+
     }
 //Location Check
     public void statusCheck() {
