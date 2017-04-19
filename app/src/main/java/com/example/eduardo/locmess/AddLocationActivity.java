@@ -10,40 +10,29 @@ public class AddLocationActivity extends AppCompatActivity {
 
     double longitude;
     double latitude;
-    private Button b_get;
+    Button b_get;
     private TrackGPS gps;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_location);
-        b_get = (Button)findViewById(R.id.locatAdd);
+
+        gps = new TrackGPS(AddLocationActivity.this);
 
 
+        if(gps.canGetLocation()){
 
-        b_get.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+            longitude = gps.getLongitude();
+            latitude = gps .getLatitude();
 
-                gps = new TrackGPS(AddLocationActivity.this);
+            Toast.makeText(getApplicationContext(),"Longitude:"+Double.toString(longitude)+"\nLatitude:"+Double.toString(latitude),Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
 
-
-                if(gps.canGetLocation()){
-
-
-                    longitude = gps.getLongitude();
-                    latitude = gps .getLatitude();
-
-                    Toast.makeText(getApplicationContext(),"Longitude:"+Double.toString(longitude)+"\nLatitude:"+Double.toString(latitude),Toast.LENGTH_SHORT).show();
-                }
-                else
-                {
-
-                    gps.showSettingsAlert();
-                }
-
-            }
-        });
+            gps.showSettingsAlert();
+        }
     }
 
     @Override

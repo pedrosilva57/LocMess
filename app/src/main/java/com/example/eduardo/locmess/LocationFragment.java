@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -24,7 +25,9 @@ public class LocationFragment extends Fragment {
 
     FloatingActionButton fab;
     String[] teste = {"Almada", "Lisboa", "Oeiras", "Cacém", "Loures", "Setúbal", "Corroios", "Seixal", "Costa da Caparica", "Sesimbra", "Faro", "Coimbra", "Leiria"};
-
+    private TrackGPS gps;
+    double longitude;
+    double latitude;
 
     public static LocationFragment newInstance() {
         LocationFragment fragment = new LocationFragment();
@@ -45,6 +48,7 @@ public class LocationFragment extends Fragment {
             public void onClick(View view){
                 Intent intent = new Intent(getActivity(), AddLocationActivity.class);
                 startActivity(intent);
+
             }
         });
 
