@@ -2,12 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.eduardo.locmess">
 
+    <uses-sdk android:minSdkVersion="14" />
+
     <permission
         android:name="com.example.eduardo.locmess.MAPS_RECEIVE"
         android:protectionLevel="signature" />
-    <uses-permission android:name="com.example.eduardo.locmess.MAPS_RECEIVE" />
 
-    <uses-sdk android:minSdkVersion="14" />
+    <uses-permission android:name="com.example.eduardo.locmess.MAPS_RECEIVE" />
     <!-- Wifi Direct https://developer.android.com/guide/topics/connectivity/wifip2p.html -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -63,9 +64,14 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
-        <activity
-            android:name=".AddLocationActivity"
-            android:label="@string/title_activity_add_location"></activity>
+        <activity android:name=".LocationAddActivity" />
+
+        <service
+            android:name=".TrackGPS"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".AddLocationActivity"></activity>
     </application>
 
 </manifest>

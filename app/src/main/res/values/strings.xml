@@ -13,4 +13,6 @@
     <string name="messages">Messages</string>
     <string name="profile">Profile</string>
     <string name="title_activity_add_location">Add Location</string>
+    <string name="gps">Gps Coordinates</string>
+
 </resources>
