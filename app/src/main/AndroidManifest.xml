@@ -61,7 +61,11 @@
         <activity android:name=".AddLocationActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-
+                android:value="com.example.eduardo.locmess.MainActivity" />
+        </activity>
+        <activity android:name=".EditLocationActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.eduardo.locmess.MainActivity" />
         </activity>
     </application>

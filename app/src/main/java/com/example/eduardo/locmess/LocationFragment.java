@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -35,7 +36,7 @@ public class LocationFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
@@ -52,13 +53,18 @@ public class LocationFragment extends Fragment {
             }
         });
 
-        ListView lv = (ListView) rootView.findViewById(R.id.locationListView);
+        final ListView lv = (ListView) rootView.findViewById(R.id.locationListView);
         ArrayAdapter adapter = new ArrayAdapter(this.getActivity(), android.R.layout.simple_list_item_1, teste);
         lv.setAdapter(adapter);
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), EditLocationActivity.class);
+                String listItem = (String)lv.getItemAtPosition(position);
+                intent.putExtra("Local", listItem);
+                startActivity(intent);
+
                 Toast.makeText(getActivity(), teste[position], Toast.LENGTH_SHORT).show();
             }
         });
