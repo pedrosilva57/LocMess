@@ -14,5 +14,9 @@
     <string name="profile">Profile</string>
     <string name="title_activity_add_location">Add Location</string>
     <string name="gps">Gps Coordinates</string>
-
+    <string name="local">Location Name</string>
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="btn_Gps">Get Gps Coordinates</string>
+    <string name="btn_SaveLoca">Save Location</string>
 </resources>

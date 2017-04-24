@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
 
     ActionBar actionBar;
 
-
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 

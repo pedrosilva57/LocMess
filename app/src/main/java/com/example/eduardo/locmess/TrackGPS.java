@@ -36,6 +36,7 @@ public class TrackGPS extends Service implements LocationListener {
     protected LocationManager locationManager;
     boolean checkGPS = false;
     boolean checkNetwork = false;
+    boolean checkWifi = false;
     boolean canGetLocation = false;
     Location loc;
     double latitude;
@@ -145,7 +146,7 @@ public class TrackGPS extends Service implements LocationListener {
 
         alertDialog.setTitle("GPS Not Enabled");
 
-        alertDialog.setMessage("Do you wants to turn On GPS");
+        alertDialog.setMessage("Do you wants to turn ON GPS");
 
 
         alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {

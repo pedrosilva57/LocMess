@@ -8,14 +8,18 @@ import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 public class AddLocationActivity extends AppCompatActivity {
 
     double longitude;
     double latitude;
+    Button btn_get;
+    Button btn_save;
     private TrackGPS gps;
-    ActionBar ab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +27,31 @@ public class AddLocationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_location);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        btn_get = (Button) findViewById(R.id.btnGetPos);
+        btn_save = (Button) findViewById(R.id.btnSavePos);
+
+        btn_get.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getCoordinates();
+            }
+        });
+
+        btn_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SaveLocation();
+            }
+        });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        gps.stopUsingGPS();
+    }
+
+    public void getCoordinates(){
         gps = new TrackGPS(AddLocationActivity.this);
 
         if(gps.canGetLocation()){
@@ -30,7 +59,8 @@ public class AddLocationActivity extends AppCompatActivity {
             longitude = gps.getLongitude();
             latitude = gps .getLatitude();
 
-            Toast.makeText(getApplicationContext(),"Longitude:"+Double.toString(longitude)+"\nLatitude:"+Double.toString(latitude),Toast.LENGTH_SHORT).show();
+            TextView viewGps = (TextView) findViewById(R.id.vwGpsCoor);
+            viewGps.setText("\nLongitude: "+Double.toString(longitude)+"\n\nLatitude: "+Double.toString(latitude));
         }
         else
         {
@@ -38,10 +68,8 @@ public class AddLocationActivity extends AppCompatActivity {
         }
 
     }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        gps.stopUsingGPS();
+    public void SaveLocation(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
