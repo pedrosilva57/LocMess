@@ -74,14 +74,14 @@ public class LocationFragment extends Fragment {
                 intent.putExtra("Local", listItem);
                 startActivity(intent);
 
-                Toast.makeText(getActivity(), "Escolheu " + position, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getActivity(), "Escolheu " + position, Toast.LENGTH_SHORT).show();
             }
         });
 
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.v("long clicked", "pos:" + position);
+                //Log.v("long clicked", "pos:" + position);
                 setHasOptionsMenu(true);//ActionBar Icons Actions
                 return true;
             }
