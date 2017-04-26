@@ -56,6 +56,14 @@
             android:name=".TrackGPS"
             android:enabled="true"
             android:exported="true" />
+        
+        <activity android:name=".ShowMessage">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.eduardo.locmess.MainActivity" />
+        </activity>
+        <activity android:name=".CreateMessage"
+            android:windowSoftInputMode="adjustPan"/>
 
         <activity android:name=".AddLocationActivity">
             <meta-data
