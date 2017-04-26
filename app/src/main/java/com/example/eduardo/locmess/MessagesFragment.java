@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -31,14 +32,15 @@ public class MessagesFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_messages, container, false);
 
         //Floating Action Button Action
-        /*fab = (FloatingActionButton) rootView.findViewById(R.id.messageAdd);
-        fab.setOnClickListener(new View.OnClickListener(){
+        FloatingActionButton new_message_view = (FloatingActionButton) rootView.findViewById(R.id.new_message);
+        new_message_view.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
-                Intent intent = new Intent(getActivity(), .class);
-                startActivity(intent);
+            public void onClick(View view) {
+                //Call CreateMessage Activity
+                Intent i = new Intent(view.getContext(), CreateMessage.class);
+                startActivity(i);
             }
-        });*/
+        });
 
         ListView lv = (ListView) rootView.findViewById(R.id.messagesListView);
         ArrayAdapter adapter = new ArrayAdapter(this.getActivity(), android.R.layout.simple_list_item_1, teste);
@@ -48,6 +50,11 @@ public class MessagesFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(getActivity(), teste[position], Toast.LENGTH_SHORT).show();
+                
+                //Call ShowMessage Activity
+                Intent i = new Intent(view.getContext(), ShowMessage.class);
+                i.putExtra("position",position);
+                startActivity(i);
             }
         });
         return rootView;
